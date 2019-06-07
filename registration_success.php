@@ -34,27 +34,29 @@ $result = $conn->query("SELECT course.id,course.name,std_course_sec.section_name
           </ul>
         </div>
          <h1 style="text-align: center;">Registration Succcess</h1>
-         <table class="table">
-             <thead>
+         <div id="tablestyle">
+             <table class="table">
+                 <thead>
+                     <tr>
+                        <th>#</th>
+                        <th>Course Name</th>
+                        <th>Credit</th>
+                        <th>Section</th>
+                        <th>Registration</th>
+                        <th>History</th>
+                     </tr>
+                 </thead>
+                 <?php while($row = $result->fetch_assoc()) { $subid = $row['id'];?>             
                  <tr>
-                    <th>#</th>
-                    <th>Course Name</th>
-                    <th>Credit</th>
-                    <th>Section</th>
-                    <th>Registration</th>
-                    <th>History</th>
+                    <td><?php echo ++$i ?></td>
+                    <td><?php echo $row['name'] ?></td>
+                    <td><?php echo $row['section_name'] ?></td>
+                    <td><?php echo $row['credit'] ?></td>
+                    <td style="color:green">Success</td>
+                    <td><a href="teacher_history.php?subject=<?php echo $subid ?>" target="_blank">View History</a></td>
                  </tr>
-             </thead>
-             <?php while($row = $result->fetch_assoc()) { $subid = $row['id'];?>             
-             <tr>
-                <td><?php echo ++$i ?></td>
-                <td><?php echo $row['name'] ?></td>
-                <td><?php echo $row['section_name'] ?></td>
-                <td><?php echo $row['credit'] ?></td>
-                <td style="color:green">Success</td>
-                <td><a href="teacher_history.php?subject=<?php echo $subid ?>" target="_blank">View History</a></td>
-             </tr>
-             <?php } ?>
-         </table>
+                 <?php } ?>
+             </table>
+         </div>
     </body>
 </html>

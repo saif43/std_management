@@ -1,5 +1,6 @@
 <?php
 
-$conn = mysqli_connect("localhost", "root", "", "db");  
+$conn = mysqli_connect("localhost", "root", "", "saif");  
+
 
 ?>
